@@ -1,40 +1,24 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import { useState , useEffect} from 'react'
 import QuestionDetail from "./QuestionDetail";
 
 const QuestionList = () => {
-  const questionList = [
-    {
-      id: 1,
-      title: "First Tittle",
-      body: "first tile description is here"
-    },
-    {
-      id: 2,
-      title: "First Tittle",
-      body: "first tile description is here"
-    },
-    {
-      id: 3,
-      title: "First Tittle",
-      body: "first tile description is here"
-    },
-    {
-      id: 4,
-      title: "First Tittle",
-      body: "first tile description is here"
-    },
-    {
-      id: 5,
-      title: "First Tittle",
-      body: "first tile description is here"
-    },
-    {
-      id: 6,
-      title: "First Tittle",
-      body: "first tile description is here"
-    }
-  ]
+  const [questionList, setQuestionList] = useState([])
+  const url = "http://localhost:3000/api/v1/questions"
+
+  const fetchQuestionList = () => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        setQuestionList(data)
+      })
+  }
+
+  useEffect(() => {
+    fetchQuestionList()
+  }, [])
 
   return (
     <div className="text-center">

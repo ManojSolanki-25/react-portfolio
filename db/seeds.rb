@@ -7,3 +7,37 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+puts "start seed"
+Question.create([
+  {
+    tag: "Ruby",
+    title: "First Tittle",
+    body: "first tile description is here"
+  },
+  {
+    tag: "Ruby",
+    title: "First Tittle",
+    body: "first tile description is here"
+  },
+  {
+    tag: "Rails",
+    title: "First Tittle",
+    body: "first tile description is here"
+  },
+  {
+    tag: "Ruby",
+    title: "First Tittle",
+    body: "first tile description is here"
+  },
+  {
+    tag: "React",
+    title: "First Tittle",
+    body: "first tile description is here"
+  },
+  {
+    tag: "Rails",
+    title: "First Tittle",
+    body: "first tile description is here"
+  }
+])
+puts "END PROCESS"

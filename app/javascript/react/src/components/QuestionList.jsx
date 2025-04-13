@@ -4,6 +4,7 @@ import { useState , useEffect} from 'react'
 import QuestionDetail from "./QuestionDetail";
 import EmptyContainer from "./EmptyContainer";
 import LoaderContainer from "./LoaderContainer";
+import Modal from "./Modal";
 
 const QuestionList = () => {
   const questionTags = [
@@ -59,10 +60,30 @@ const QuestionList = () => {
     })
   }
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   console.log(questionList.length);
 
   return (
     <div className="text-center">
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Rails 8 + React + Tailwind Modal</h1>
+      <button
+        onClick={openModal}
+        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+      >
+        Open Modal
+      </button>
+      <Modal isOpen={isModalOpen} onClose={closeModal} modalTitle="Add Question Detail">
+        <p className="text-gray-700">
+          This is a Tailwind-styled modal in your Rails 8 project!
+        </p>
+      </Modal>
+    </div>
+
      <div className="mb-4">
         <p className="text-sm font-medium text-gray-700 mb-1">Filter by tag</p>
         <select

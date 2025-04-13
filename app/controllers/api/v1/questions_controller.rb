@@ -18,4 +18,19 @@ class Api::V1::QuestionsController < ApplicationController
     end
     render json: @question, status: :ok
   end
+
+  def create
+    @question = Question.new(params_permit)
+    if @question.save
+      render json: { data: @question, status: "success"}, status: :ok
+    else
+      render json: { data: @question.errors.full_messages, status: "failure" }, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def params_permit
+    params.permit(:tag, :title, :body)
+  end
 end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :questions, only: [:index] do
+      resources :questions, only: [:index, :create] do
         put :update_counter, on: :member
       end
     end
